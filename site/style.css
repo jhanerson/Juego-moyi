@@ -1,0 +1,15 @@
+* {
+
+    font-style: italic;
+
+}
+
+
+.img-a-1 {
+
+
+    background-image: url('Data/img/A/A-1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 20%;
+}
