@@ -13,3 +13,26 @@
     background-size: cover;
     height: 20%;
 }
+
+
+
+/* Estilos para el juego */
+.game-area {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+#circle {
+    width: 30px;
+    height: 30px;
+    background-color: blue;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
