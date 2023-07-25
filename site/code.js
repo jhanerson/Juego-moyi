@@ -5,7 +5,6 @@ window.onload = function () {
 }
 
 
-
 // Obtener el elemento del círculo
 const circle = document.getElementById("circle");
 
@@ -26,32 +25,22 @@ function updatePosition() {
     circle.style.bottom = circleY + "px";
 }
 
-// Función para manejar las teclas presionadas
-document.addEventListener("keydown", function (event) {
-    const step = 10; // Cantidad de píxeles para moverse
+// Función para manejar el movimiento en dispositivos táctiles
+function handleTouchMove(event) {
+    const touch = event.touches[0];
+    const x = touch.clientX - gameArea.getBoundingClientRect().left - circle.offsetWidth / 2;
+    const y = gameHeight - (touch.clientY - gameArea.getBoundingClientRect().top) - circle.offsetHeight / 2;
 
-    switch (event.key) {
-        case "ArrowUp":
-            if (circleY < gameHeight - circle.offsetHeight) {
-                circleY += step;
-            }
-            break;
-        case "ArrowDown":
-            if (circleY > 0) {
-                circleY -= step;
-            }
-            break;
-        case "ArrowLeft":
-            if (circleX > 0) {
-                circleX -= step;
-            }
-            break;
-        case "ArrowRight":
-            if (circleX < gameWidth - circle.offsetWidth) {
-                circleX += step;
-            }
-            break;
+    // Verificar límites del área de juego
+    if (x >= 0 && x <= gameWidth - circle.offsetWidth) {
+        circleX = x;
+    }
+    if (y >= 0 && y <= gameHeight - circle.offsetHeight) {
+        circleY = y;
     }
 
     updatePosition();
-});
+}
+
+// Agregar evento para el movimiento táctil
+gameArea.addEventListener("touchmove", handleTouchMove, false);
